@@ -1,0 +1,31 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+salle_tp_accueil:
+  path: /accueil
+  controller: App\Controller\SalleController::accueil
+
+salle_tp_afficher:
+  path: /afficher/{numero}
+  controller: App\Controller\SalleController::afficher
+  requirements:
+    numero: '\d{1,2}'
+
+salle_tp_dix:
+  path: /dix
+  controller: App\Controller\SalleController::dix
+
+salle_tp_test_xml:
+  path: /test/xml
+  controller: App\Controller\SalleController::testXml
+  
+salle_tp_test_json:
+  path: /test/json
+  controller: App\Controller\SalleController::testJson
+
+salle_tp_treize:
+  path: /treize
+  controller: App\Controller\SalleController::treize
+salle_tp_quatorze:
+  path: /quatorze
+  controller: App\Controller\SalleController::quatorze

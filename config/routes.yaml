@@ -1,0 +1,3 @@
+salle_tp :
+  resource: routes/salle/routes.yaml
+  prefix: /salle

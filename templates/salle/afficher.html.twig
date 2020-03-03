@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Salle</title>
+    </head>
+    <body>
+        <img src="/images/logo-UPJV.png" />
+        <h1>Salle {{ numero }}</h1>
+        <p> Voici quelques informations concernant la salle numéro : {{ numero }}<br \>
+            blablabla {{ numero }} blablabla {{ numero }} blablabla {{ numero }}
+            blablabla {{ numero }} blablabla {{ numero }} ....
+        </p>
+        <p>lien vers <a href="{{ path('salle_tp_afficher', { 'numero': numero + 1 }) }}"> la suivante</a></p>
+        <p>lien vers <a href="{{ path('salle_tp_accueil') }}">l'accueil</a></p>
+    </body>
+</html>
