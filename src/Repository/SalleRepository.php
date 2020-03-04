@@ -42,6 +42,31 @@ class SalleRepository extends ServiceEntityRepository
         SET s.numero = s.numero + '1'");
         $result = $query->execute();
     }
+
+    public function testGetResult() {
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder->where("s.batiment = 'B'");
+        $query = $queryBuilder->getQuery();
+        return $query->getResult();
+    }
+
+    public function testGetOneOrNullResult() {
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder->select('COUNT(s)');
+        $queryBuilder->where("s.batiment = 'B'");
+        $query = $queryBuilder->getQuery();
+        return $query->getOneOrNullResult();
+    }
+
+    public function testGetSingleScalarResult() {
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder->select('COUNT(s)');
+        $queryBuilder->where("s.batiment = 'B'");
+        $query = $queryBuilder->getQuery();
+        return $query->getSingleScalarResult();
+    }
+       
+       
        
        
        

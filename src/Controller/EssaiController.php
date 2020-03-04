@@ -169,9 +169,42 @@ class EssaiController extends AbstractController
         return new Response('<html><body><a href="http://localhost/phpmyadmin">
         voir phpmyadmin</a></body></html>');
     }
+
+    public function test16() {
+        $repo = $this->getDoctrine()->getManager()
+        ->getRepository(Salle::class);
+        $result = $repo->testGetResult();
+        dump($result);
+        return new Response('<html><body></body></html>');
+    }
+    
+    public function test19() {
+        $repo = $this->getDoctrine()->getManager()
+        ->getRepository(Salle::class);
+        $result = $repo->testGetSingleScalarResult();
+        dump($result);
+        return new Response('<html><body></body></html>');
+    }
+
+    public function test20() {
+        $repo = $this->getDoctrine()->getManager()
+        ->getRepository(Salle::class);
+        $result = $repo->testGetOneOrNullResult();
+        dump($result);
+        return new Response('<html><body></body></html>');  
+    }
        
-       
-       
+    public function test23() {
+        $em = $this->getDoctrine()->getManager();
+        $salle = new Salle;
+        $salle->setBatiment('b'); // minuscule !
+        $salle->setEtage(3);
+        $salle->setNumero(63);
+        $em->persist($salle);
+        $em->flush();
+        return $this->redirectToRoute('salle_tp_voir',
+        array('id' => $salle->getId()));
+    }
        
    
    
