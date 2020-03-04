@@ -1,0 +1,179 @@
+salle_tp_test1: 
+    path: /test1 
+    controller: App\Controller\EssaiController::test1    
+    
+salle_tp_test2: 
+    path: /test2
+    controller: App\Controller\EssaiController::test2  
+    
+salle_tp_test3: 
+    path: /test3
+    controller: App\Controller\EssaiController::test3   
+    
+salle_tp_test4: 
+    path: /test4 
+    controller: App\Controller\EssaiController::test4    
+    
+salle_tp_test5: 
+    path: /test5
+    controller: App\Controller\EssaiController::test5  
+    
+salle_tp_test6: 
+    path:  /test6
+    controller: App\Controller\EssaiController::test6  
+    
+salle_tp_test7: 
+    path:  /test7
+    controller: App\Controller\EssaiController::test7
+    
+salle_tp_test8: 
+    path:  /test8
+    controller: App\Controller\EssaiController::test8    
+    
+salle_tp_test8bis: 
+    path:  /test8bis
+    controller: App\Controller\EssaiController::test8bis    
+    
+salle_tp_test9: 
+    path:  /test9
+    controller: App\Controller\EssaiController::test9
+    
+salle_tp_test10: 
+    path:  /test10 
+    controller: App\Controller\EssaiController::test10    
+    
+salle_tp_test11: 
+    path:  /test11
+    controller: App\Controller\EssaiController::test11    
+    
+salle_tp_test12: 
+    path:  /test12
+    controller: App\Controller\EssaiController::test12    
+    
+salle_tp_test13: 
+    path:  /test13
+    controller: App\Controller\EssaiController::test13 
+    
+salle_tp_test14: 
+    path:  /test14
+    controller: App\Controller\EssaiController::test14    
+        
+salle_tp_test15: 
+    path:  /test15
+    controller: App\Controller\EssaiController::test15    
+    
+salle_tp_test16: 
+    path:  /test16
+    controller: App\Controller\EssaiController::test16    
+        
+salle_tp_test17:
+    path:  /test17
+    controller: App\Controller\EssaiController::test17    
+            
+salle_tp_test18:
+    path:  /test18
+    controller: App\Controller\EssaiController::test18    
+                
+salle_tp_test19:
+    path:  /test19
+    controller: App\Controller\EssaiController::test19    
+                
+salle_tp_test20:
+    path:  /test20
+    controller: App\Controller\EssaiController::test20    
+                    
+salle_tp_test21:
+    path:  /test21
+    controller: App\Controller\EssaiController::test21    
+                    
+salle_tp_test22:
+    path:  /test22
+    controller: App\Controller\EssaiController::test22    
+                    
+salle_tp_test23:
+    path:  /test23
+    controller: App\Controller\EssaiController::test23    
+                    
+salle_tp_test24:
+    path:  /test24
+    controller: App\Controller\EssaiController::test24    
+                    
+salle_tp_test25:
+    path:  /test25
+    controller: App\Controller\EssaiController::test25    
+                        
+salle_tp_test26:
+    path:  /test26
+    controller: App\Controller\EssaiController::test26   
+    
+salle_tp_test27:
+    path:  /test27
+    controller: App\Controller\EssaiController::test27    
+        
+salle_tp_test28:
+    path:  /test28
+    controller: App\Controller\EssaiController::test28    
+            
+salle_tp_test29:
+    path:  /test29
+    controller: App\Controller\EssaiController::test29    
+    
+salle_tp_test30:
+    path:  /test30
+    controller: App\Controller\EssaiController::test30    
+                    
+salle_tp_test31:
+    path:  /test31
+    controller: App\Controller\EssaiController::test31    
+                    
+salle_tp_test32:
+    path:  /test32
+    controller: App\Controller\EssaiController::test32                        
+                    
+salle_tp_test33:
+    path:  /test33
+    controller: App\Controller\EssaiController::test33    
+                                       
+salle_tp_test34:
+    path:  /test34
+    controller: App\Controller\EssaiController::test34    
+                                            
+salle_tp_test35:
+    path:  /test35
+    controller: App\Controller\EssaiController::test35    
+                                                          
+salle_tp_test36:
+    path:  /test36
+    controller: App\Controller\EssaiController::test36    
+                                                                              
+salle_tp_test37:
+    path:  /test37
+    controller: App\Controller\EssaiController::test37    
+                                                                              
+salle_tp_test38:
+    path:  /test38
+    controller: App\Controller\EssaiController::test38    
+                                                                               
+salle_tp_test39:
+    path:  /test39
+    controller: App\Controller\EssaiController::test39    
+                       
+salle_tp_test40: 
+    path:  /test40 
+    controller: App\Controller\EssaiController::test40    
+                          
+salle_tp_test41: 
+    path:  /test41
+    controller: App\Controller\EssaiController::test41    
+                              
+salle_tp_test42: 
+    path:  /test42
+    controller: App\Controller\EssaiController::test42    
+    
+salle_tp_test50: 
+    path:  /test50
+    controller: App\Controller\EssaiController::test42    
+    
+salle_tp_test51: 
+    path:  /test51
+    controller: App\Controller\EssaiController::test51

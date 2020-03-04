@@ -1,3 +1,7 @@
 salle_tp :
   resource: routes/salle/routes.yaml
   prefix: /salle
+
+salle_tp_test_chap3et4:
+  resource: routes/routingTestChap3et4.yaml
+  prefix: /essai
