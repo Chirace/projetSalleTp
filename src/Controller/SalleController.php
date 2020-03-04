@@ -5,6 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Doctrine\ORM\EntityManagerInterface;
 
 use App\Entity\Salle;
 
@@ -62,4 +63,25 @@ class SalleController extends AbstractController {
         array('designation' => $salle->__toString()));
         //ou seulement $salle
     }
+
+    public function voir($id) {
+        $salle = $this->getDoctrine()->getRepository(Salle::class)->find($id);
+        if(!$salle)
+        throw $this->createNotFoundException('Salle[id='.$id.'] inexistante');
+        return $this->render('salle/voir.html.twig', 
+        array('salle' => $salle));
+    }
+
+    public function ajouter($batiment, $etage, $numero) {
+        $entityManager = $this->getDoctrine()->getManager();
+        $salle = new Salle;
+        $salle->setBatiment($batiment);
+        $salle->setEtage($etage);
+        $salle->setNumero($numero);
+        $entityManager->persist($salle);
+        $entityManager->flush();
+        return $this->redirectToRoute('salle_tp_voir',
+        array('id' => $salle->getId()));
+    }
+ 
 }
