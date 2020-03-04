@@ -19,6 +19,33 @@ class SalleRepository extends ServiceEntityRepository
         parent::__construct($registry, Salle::class);
     }
 
+    public function findByBatimentAndEtageMax($batiment, $etage) {
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder->where('s.batiment = :batiment')
+        ->setParameter('batiment', $batiment)
+        ->andWhere('s.etage <= :etage')
+        ->setParameter('etage', $etage)
+        ->orderBy('s.etage', 'asc');
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function findSalleBatAouB() {
+        $query = $this->getEntityManager()
+        ->createQuery("SELECT s FROM App\Entity\Salle s
+        WHERE s.batiment IN ('A', 'B')");
+        return $query->getResult();
+    }
+
+    public function plusUnEtage() {
+        $query = $this->getEntityManager()
+        ->createQuery("UPDATE App\Entity\Salle s
+        SET s.numero = s.numero + '1'");
+        $result = $query->execute();
+    }
+       
+       
+       
+
     // /**
     //  * @return Salle[] Returns an array of Salle objects
     //  */
