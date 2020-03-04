@@ -1,0 +1,12 @@
+{{ form_start(monFormulaire) }}
+    {{ form_errors(monFormulaire) }}
+    <table>
+        <tr>
+            <td>{{ form_row(monFormulaire.batiment) }}</td>
+            <td>{{ form_row(monFormulaire.etage) }}</td>
+        </tr><tr>
+            <td>{{ form_row(monFormulaire.numero) }}</td>
+            <td>{{ form_row(monFormulaire.submit) }}</td>
+        </tr>
+    </table>
+{{ form_end(monFormulaire) }}

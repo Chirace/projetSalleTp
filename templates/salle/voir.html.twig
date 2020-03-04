@@ -8,4 +8,7 @@
     <li>etage {{ salle.etage }}</li>
     <li>numero {{ salle.numero }}</li>
 </ul>
+<p><a href="{{ path('salle_tp_modifier', { 'id': salle.id }) }}">
+ modifier la salle</a></p>
 {% endblock %}
+
