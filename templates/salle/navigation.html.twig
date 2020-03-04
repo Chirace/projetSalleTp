@@ -1,0 +1,4 @@
+{% for salle in salles %}
+    - <a href="{{ path('salle_tp_voir', { 'id': salle.id }) }}">
+    {{salle.batiment}}-{{salle.etage}}.{{salle.numero}}</a>
+{% endfor %}

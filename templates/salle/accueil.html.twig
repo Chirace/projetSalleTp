@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html> 
-    <head>
-        <title>Accueil</title>
-    </head>
-    <body>
-        <h1>Salles :</h1>
-        <p> Voici quelques informations concernant les salles<br \>
-            En particulier, la salle {{ numero }} <br \>
-            blablabla blablabla blablabla blablabla blablabla blablabla blablabla
-            blablabla ....
-        </p>
-    </body>
-</html>
+{% extends "layoutgeneral.html.twig" %}
+{% block titre %}
+    {{ parent() }} : Accueil
+{% endblock %}
+
+{% block contenu %}
+    <h3>Gestion des Salles Informatiques</h3>
+    <p><i>page visitée {{ nbreFois }} fois.</i></p>
+    <p><a href="{{ path('salle_tp_ajouter2') }}">ajouter une salle</a></p>
+{% endblock %}

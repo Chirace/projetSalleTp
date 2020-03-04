@@ -11,15 +11,29 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\ORM\EntityManagerInterface;
 
+use Symfony\Component\HttpFoundation\Session\Session;
+//use App\Service\ImageTexteGenerateur;
+
 use App\Entity\Salle;
 
 
 class SalleController extends AbstractController {
-    public function accueil() {
+    /*public function accueil() {
         $nombre = rand(1,84);
         return $this->render('salle/accueil.html.twig',
         array('numero' => $nombre)); // ou ['numero'=>$nombre]);
+    }*/
+
+    public function accueil(Session $session) {
+        if ($session->has('nbreFois'))
+        $session->set('nbreFois', $session->get('nbreFois')+1);
+        else
+        $session->set('nbreFois', 1);
+        //return $this->render('@SalleTp/Salle/accueil.html.twig',
+        return $this->render('Salle/accueil.html.twig',
+        array('nbreFois' => $session->get('nbreFois')));
     }
+       
 
     public function afficher($numero) {
         if ($numero > 50)
@@ -107,6 +121,26 @@ class SalleController extends AbstractController {
         return $this->render('salle/ajouter2.html.twig',
         array('monFormulaire' => $form->createView()));
        }
+
+       public function navigation() {
+            $salles = $this->getDoctrine()
+            ->getRepository(Salle::class)->findAll();
+            return $this->render('salle/navigation.html.twig',
+            array('salles' => $salles));
+        }
+       
+       
+       /*public function voirautrement(ImageTexteGenerateur $texte2image, $id) {
+            $salle = $this->getDoctrine()->getRepository(Salle::class)
+            ->find($id);
+            if(!$salle)
+            throw $this->createNotFoundException('Salle[id='.$id.']
+                inexistante');
+            $sourceDataUri = $texte2image->texte2Image($salle->__toString());
+
+            return $this->render('salle/voirautrement.html.twig',
+            array('dataURI' => $sourceDataUri));
+        }*/
        
  
 }

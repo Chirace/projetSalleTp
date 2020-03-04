@@ -48,3 +48,10 @@ salle_tp_ajouter2:
   path: /ajouter2
   controller: App\Controller\SalleController::ajouter2
 
+salle_tp_navigation:
+  path: /navigation
+  controller: App\Controller\SalleController::navigation
+#salle_tp_voirautrement:
+ # path: /voirautrement/{id}
+  #controller: App\Controller\SalleController::voirautrement
+
