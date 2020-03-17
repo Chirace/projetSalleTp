@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Salle;
 use App\Entity\Ordinateur;
 use App\Entity\Marque;
+use App\Entity\Logiciel;
 
 class EssaiController extends AbstractController
 {
@@ -452,6 +453,64 @@ class EssaiController extends AbstractController
         les ordis 904 et 905 avec PhpMyAdmin</body></html>');
     }
        
+    public function test39() {
+        $entityManager = $this->getDoctrine()->getManager();
+        $ordi1 = new Ordinateur;
+        $ordi1->setNumero(1000);
+        $ordi1->setIp('192.168.10.00');
+        $marque = $entityManager->getRepository(Marque::class)->findOneByNom('Dell');
+        $ordi1->setMarque($marque);
+        $ordi2 = new Ordinateur;
+        $ordi2->setNumero(1001);
+        $ordi2->setIp('192.168.10.01');
+        $ordi2->setMarque($marque);
+        $logicielF = new Logiciel ;
+        $logicielF->setNom('Firefox');
+        $entityManager->persist($logicielF);
+        $logicielG = new Logiciel ;
+        $logicielG->setNom('Gimp2.2');
+        $entityManager->persist($logicielG);
+        $logicielF->addMachineInstallee($ordi1);
+        $logicielG->addMachineInstallee($ordi1); 
+        $logicielF->addMachineInstallee($ordi2);
+        $ordi2->addLogicielInstalle($logicielG);
+        $entityManager->flush();
+        return new Response('<html><body></body></html>');
+    }
+
+    public function test40() {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository(Logiciel::class);
+        $logiciel = $repo->findOneByNom('Firefox');
+        $result="";
+        foreach ($logiciel->getMachineInstallees() as $ordi)
+        $result.=" - ".$ordi->getIp();
+        return new Response('<html><body>'.$result.'</body></html>');
+    }
+       
+    public function test41() {
+        $em = $this->getDoctrine()->getManager(); 
+        $repo = $em->getRepository(Logiciel::class);
+        $logiciels = $repo->findByOrdinateur('192.168.10.00');
+        $result = ' ';
+        foreach ($logiciels as $logiciel)
+        $result .= $logiciel->getNom().' ';
+        return new Response('<html><body>'.$result.'</body></html>');
+    }
+       
+    public function test42() {
+        $em = $this->getDoctrine()->getManager();
+        $logicielC = new Logiciel ;
+        $logicielC->setNom('Apache');
+        $em->persist($logicielC);
+        $em->flush();
+        $repom = $em->getRepository(Logiciel::class);
+        $logicielOrdis = $repom->getLogicielsEtEventuellementOrdinateurs();
+        $result = ' ';
+        foreach ($logicielOrdis as $logicielOrdi)
+        $result .= $logicielOrdi['nom'].' : '.$logicielOrdi['ip'].'<br />';
+        return new Response('<html><body>'.$result.'</body></html>');
+    }
        
        
    

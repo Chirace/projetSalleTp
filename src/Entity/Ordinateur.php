@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,6 +39,17 @@ class Ordinateur
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $salle;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Logiciel",
+     * mappedBy="machine_installees", cascade="persist")
+     */
+    private $logiciel_installes;
+
+    public function __construct()
+    {
+        $this->logiciel_installes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -87,6 +100,34 @@ class Ordinateur
     public function setSalle(?Salle $salle): self
     {
         $this->salle = $salle;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Logiciel[]
+     */
+    public function getLogicielInstalles(): Collection
+    {
+        return $this->logiciel_installes;
+    }
+
+    public function addLogicielInstalle(Logiciel $logicielInstalle): self
+    {
+        if (!$this->logiciel_installes->contains($logicielInstalle)) {
+            $this->logiciel_installes[] = $logicielInstalle;
+            $logicielInstalle->addMachineInstallee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLogicielInstalle(Logiciel $logicielInstalle): self
+    {
+        if ($this->logiciel_installes->contains($logicielInstalle)) {
+            $this->logiciel_installes->removeElement($logicielInstalle);
+            $logicielInstalle->removeMachineInstallee($this);
+        }
 
         return $this;
     }
