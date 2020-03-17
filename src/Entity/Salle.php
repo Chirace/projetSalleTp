@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -38,6 +40,16 @@ class Salle
      * message="la valeur doit être <= {{ compared_value }}")
      */
     private $numero;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Ordinateur", mappedBy="salle")
+     */
+    private $ordinateurs;
+
+    public function __construct()
+    {
+        $this->ordinateurs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,5 +102,36 @@ class Salle
      */
     public function corrigeNomBatiment() {
         $this->batiment = strtoupper($this->batiment);
+    }
+
+    /**
+     * @return Collection|Ordinateur[]
+     */
+    public function getOrdinateurs(): Collection
+    {
+        return $this->ordinateurs;
+    }
+
+    public function addOrdinateur(Ordinateur $ordinateur): self
+    {
+        if (!$this->ordinateurs->contains($ordinateur)) {
+            $this->ordinateurs[] = $ordinateur;
+            $ordinateur->setSalle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrdinateur(Ordinateur $ordinateur): self
+    {
+        if ($this->ordinateurs->contains($ordinateur)) {
+            $this->ordinateurs->removeElement($ordinateur);
+            // set the owning side to null (unless already changed)
+            if ($ordinateur->getSalle() === $this) {
+                $ordinateur->setSalle(null);
+            }
+        }
+
+        return $this;
     }
 }
