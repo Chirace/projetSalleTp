@@ -235,6 +235,7 @@ class EssaiController extends AbstractController
         $salle->setBatiment('C');
         $salle->setEtage(2);
         $salle->setNumero(16); 
+        $em->persist($marque);
         $em->persist($ordi);
         $em->persist($salle);
         $em->flush();
@@ -250,6 +251,7 @@ class EssaiController extends AbstractController
         $ordi->setNumero(703);
         $ordi->setIp('192.168.7.03');
         $ordi->setMarque($marque);
+        //$em->persist($marque);
         $em->persist($ordi);
         $em->flush();
         dump($ordi);
