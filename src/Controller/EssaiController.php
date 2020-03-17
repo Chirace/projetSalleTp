@@ -331,6 +331,124 @@ class EssaiController extends AbstractController
         $result .= $ordi->getIp().' ';
         return new Response('<html><body>'.$result.'</body></html>');
     }
+
+    public function test33() {
+        $em = $this->getDoctrine()->getManager();
+        $ordi = new Ordinateur;
+        $ordi->setNumero(806);
+        $ordi->setIp('192.168.8.06');
+        $marque = $em->getRepository(Marque::class)->findOneByNom('Dell');
+        $ordi->setMarque($marque);
+        $em->persist($ordi);
+        $salle = new Salle ;
+        $salle->setBatiment('D');
+        $salle->setEtage(8);
+        $salle->setNumero(86);
+        $ordi->setSalle($salle);
+        $em->persist($salle);
+        $em->flush();
+        dump($ordi);
+        $ordi->setSalle(null);
+        dump($ordi);
+        dump($salle);
+        return new Response('<html><body></body></html>');
+    }
+
+    public function test34() {
+        $em = $this->getDoctrine()->getManager();
+        $ordi = new Ordinateur;
+        $ordi->setNumero(806);
+        $ordi->setIp('192.168.8.06');
+        $marque = $em->getRepository(Marque::class)->findOneByNom('Dell');
+        $ordi->setMarque($marque);
+        $em->persist($ordi);
+        $salle = new Salle ;
+        $salle->setBatiment('D');
+        $salle->setEtage(8);
+        $salle->setNumero(86);
+        $ordi->setSalle($salle);
+        $em->persist($salle);
+        $em->flush();
+        dump($ordi);
+        $ordi->setSalle(null);
+        dump($ordi);
+        dump($salle);
+        return new Response('<html><body></body></html>');
+    }
+    
+    public function test35() {
+        $em = $this->getDoctrine()->getManager();
+        $ordi = new Ordinateur;
+        $ordi->setNumero(808);
+        $ordi->setIp('192.168.8.08');
+        $marque = $em->getRepository(Marque::class)->findOneByNom('Dell');
+        $ordi->setMarque($marque);
+        $em->persist($ordi);
+        $salle = new Salle ;
+        $salle->setBatiment('D');
+        $salle->setEtage(8);
+        $salle->setNumero(88);
+        $ordi->setSalle($salle);
+        $em->persist($salle);
+        $em->flush();
+        dump($ordi);
+        $em->remove($ordi);
+        $em->flush(); 
+        dump($salle);
+        return new Response('<html><body></body></html>');
+    }
+
+    public function test36() {
+        $em = $this->getDoctrine()->getManager();
+        $salle = new Salle ;
+        $salle->setBatiment('D');
+        $salle->setEtage(9);
+        $salle->setNumero(01);
+        $ordi = new Ordinateur;
+        $ordi->setNumero(901);
+        $marque = $em->getRepository(Marque::class)->findOneByNom('Dell');
+        $ordi->setMarque($marque);
+        $ordi->setIp('192.168.9.01');
+        $em->persist($ordi);
+        $em->persist($salle);
+        $ordi->setSalle($salle);
+        $em->flush();
+        dump($ordi);
+        $em->remove($salle);
+        $em->flush();
+        return new Response('<html><body></body></html>');
+    }
+       
+    public function test38() {
+        $em = $this->getDoctrine()->getManager();
+        $salle = new Salle ;
+        $salle->setBatiment('D');
+        $salle->setEtage(9);
+        $salle->setNumero(04);
+        $em->persist($salle);
+        $ordi1 = new Ordinateur;
+        $ordi1->setNumero(904);
+        $ordi1->setIp('192.168.9.04');
+        $marque = $em->getRepository(Marque::class)->findOneByNom('Dell');
+        $ordi1->setMarque($marque);
+        $em->persist($ordi1);
+        $ordi1->setSalle($salle);
+        $ordi2 = new Ordinateur;
+        $ordi2->setNumero(905);
+        $ordi2->setIp('192.168.9.05');
+        $em->persist($ordi2);
+        $ordi2->setSalle($salle);
+        $ordi2->setMarque($marque);
+        $em->flush();
+        $idSalle = $salle->getId();
+        $em->flush();
+        dump($salle);
+        $em->remove($salle);
+        $em->flush();
+       
+        return new Response('<html><body>rechercher la salle D-9.04 puis
+        les ordis 904 et 905 avec PhpMyAdmin</body></html>');
+    }
        
        
        
